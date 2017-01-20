@@ -1,0 +1,58 @@
+.hd-Header{
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.07);
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+.hd-Header_Wrapper{
+    height:48px;
+    position:relative;
+}
+.hd-Header_Inner{
+    height: inherit;;
+    background-color:#222;
+    opacity: 0.8;
+}
+.hd-Header_Container{
+    max-width:960px;
+    margin:0 auto;
+    width:auto;
+    height: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hd-Header_Title{
+    flex: 0 0 auto;
+    text-align: left;
+}
+.hd-Title{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.hd-Title_Icon{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+.hd-Title_Icon:before{
+    content:'';
+    position: absolute;
+    top:10px;
+    left:10px;
+    width: 12px;
+    height: 12px;
+    background: #FF0;
+}
+
+.hd-Title_Str{
+    font-size: 24px;
+    font-weight: bold;
+    color: #eee;
+}
