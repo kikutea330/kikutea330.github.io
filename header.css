@@ -1,58 +1,379 @@
+/** ヘッダーモジュール */
 .hd-Header{
-    box-shadow:0 2px 2px 0 rgba(0,0,0,0.07);
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.2);
     position: fixed;
     top:0;
     left:0;
     right:0;
     z-index:1000;
+    color:#eee;
 }
-.hd-Header_Wrapper{
-    height:48px;
+/** ヘッダモジュール：ポジションラッパー */
+.hd-Header_PositionWrapLayer{
     position:relative;
 }
-.hd-Header_Inner{
-    height: inherit;;
+/** ヘッダモジュール：背景 */
+.hd-Header_BackgroundLayer{
     background-color:#222;
     opacity: 0.8;
 }
 .hd-Header_Container{
     max-width:960px;
+    min-width: 200px;
     margin:0 auto;
     width:auto;
-    height: inherit;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.hd-Header_Title{
+/** ヘッダモジュール：ロゴ */
+.hd-Header_LogoArea{
     flex: 0 0 auto;
-    text-align: left;
 }
-.hd-Title{
+/** ヘッダモジュール：メニューエリア */
+.hd-Header_MenuArea{
+    flex: 1 0 auto;
+}
+
+/** メニューミニモジュール */
+@media screen{
+    .hd-MenuMini{
+        display: none;
+    }
+    /**スマホの場合のみ表示*/
+    @media (max-width: 479px){
+        .hd-MenuMini{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            height: 48px;
+            margin-right: 16px;
+        }
+        .hd-MenuMini_Icon{
+            flex: 0 0 auto;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            position: relative;
+            background-color: transparent;
+        }
+        .hd-MenuMini_Icon::before{
+            content:'';
+            position: absolute;
+            top: 7px;
+            left: 6px;
+            width: 20px;
+            height: 2px;
+            background-color: #eee;
+            box-shadow: 0 6px 0px #eee, 0 12px 0px #eee;
+        }
+    }
+}
+
+/** メニューモジュール */
+@media screen{
+    .hd-Menu{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /** メニューモジュール：ナビエリア */
+    .hd-Menu_NavArea{
+        flex: 1 0 auto;
+        height:48px;
+    }
+    /** メニューモジュール：ユーザエリア */
+    .hd-Menu_UserArea{
+        flex: 0 0 auto;
+        height:48px;
+    }
+    @media (max-width:479px){
+        .hd-Menu[aria-hidden="true"]{
+            display: none;
+        }
+        .hd-Menu{
+            position: fixed;
+            background-color: #222;
+        }
+        .hd-Menu_NavArea{
+            flex: 1 0 100%;
+            height:auto;
+        }
+        .nd-Menu_UserArea{
+            flex: 1 0 100%;
+            height:auto;
+        }
+
+    }
+
+}
+
+/** ロゴモジュール： */
+.hd-Logo{
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
+    width: auto;
+    height:48px;
+    padding:0 5px;
 }
-.hd-Title_Icon{
+/** ロゴモジュール：アイコン */
+.hd-Logo_Icon{
+    flex:0 0 32px;
     display: inline-block;
     width: 32px;
     height: 32px;
     position: relative;
+    background-color: transparent;
 }
-.hd-Title_Icon:before{
+.hd-Logo_Icon:before{
     content:'';
     position: absolute;
-    top:10px;
+    top:2px;
     left:10px;
     width: 12px;
     height: 12px;
-    background: #FF0;
+    border-radius: 50%;
+    background: rgb(255, 250, 129);
+}
+.hd-Logo_Icon:after{
+    content:'';
+    position: absolute;
+    top:16px;
+    left:8px;
+    width: 8px;
+    height:10px;
+    border: 2px solid rgb(255, 250, 129);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    background-color: rgb(255, 250, 129);
+    background-clip: padding-box;
 }
 
-.hd-Title_Str{
+/** ロゴモジュール：タイトル */
+.hd-Logo_Title{
+    flex: 1 0 auto;
+    text-align: left;
     font-size: 24px;
     font-weight: bold;
     color: #eee;
+}
+
+/** ナビモジュール */
+@media screen{
+    .hd-Nav{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        width: auto;
+        height: inherit;
+    }
+    ul.hd-Nav{
+        margin: 0;
+        list-style: none;
+    }
+    .hd-Nav_Content{
+        flex: 0 0 auto;
+    }
+    li.hd-Nav_Content{
+        margin-bottom: 0;
+    }
+
+    @media (max-width:479px){
+        .hd-Nav{
+            flex-wrap: wrap;
+        }
+        .hd-Nav_Content{
+            flex: 1 0 100%;
+        }
+    }
+}
+
+/** ナビコンテントモジュール */
+
+    .hd-NavContent{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 0 5px;
+        height: 48px;
+    }
+    /** ナビコンテントモジュール：ホームアイコン */
+    .hd-NavContent_IconHome{
+        flex: 0 0 32px;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        background-color: transparent;
+    }
+    .hd-NavContent_IconHome::before{
+        content: '';
+        position: absolute;
+        top:16px;
+        left:7px;
+        width: 6px;
+        height: 6px;
+        border: 6px solid #eee;
+        border-bottom: none;
+        background-color: transparent;
+    }
+    .hd-NavContent:hover .hd-NavContent_IconHome::before{
+        border-color: #ccc;
+    }
+    .hd-NavContent_IconHome::after{
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 4px;
+        width: 0;
+        height: 0;
+        border: 12px solid transparent;
+        border-bottom: 12px solid #eee
+    }
+    .hd-NavContent:hover .hd-NavContent_IconHome::after{
+        border-bottom-color: #ccc;
+    }
+
+/** ナビコンテントモジュール：rラベル */
+@media screen{
+    .hd-NavContent_Label{
+        flex: 0 0 auto;
+        text-align: left;
+        vertical-align: middle;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .hd-NavContent:hover .hd-NavContent_Label{
+        color: #ccc;
+    }
+    @media (max-width: 768px){
+        .hd-NavContent_Label{
+            display: none;
+        }
+    }
+    @media (max-width: 479px) {
+        .hd-NavContent_Label{
+            flex:1 0 100%;
+            display: block;
+        }
+    }
+}
+
+
+/** ナビコンテントモジュール：人アイコン*/
+.hd-NavContent_IconPerson{
+    flex: 0 0 32px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    background-color: transparent;
+}
+.hd-NavContent_IconPerson::before{
+    content:'';
+    position:absolute;
+    top: 16px;
+    left: 6px;
+    width: 20px;
+    height: 12px;
+    border-radius: 5px 5px 1px 1px;
+    background-color: #eee;
+}
+.hd-NavContent:hover .hd-NavContent_IconPerson::before{
+    background-color: #ccc;
+}
+.hd-NavContent_IconPerson::after{
+    content:'';
+    position:absolute;
+    top:5px;
+    left:10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: 0 1px 0 #222;
+    background-color: #eee;
+}
+.hd-NavContent:hover .hd-NavContent_IconPerson::after{
+    background-color: #ccc;
+}
+
+/** ユーザモジュール */
+@media screen{
+    .hd-User{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 0 5px;
+        height: 48px;
+    }
+    /** ユーザエリアモジュール：ラベル */
+    .hd-User_Label{
+        text-align: left;
+        vertical-align: middle;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .hd-User:hover .hd-User_Label{
+        color: #ccc;
+    }
+    @media (max-width: 479px) {
+        .hd-User{
+            justify-content: flex-start;
+        }
+        .hd-User_Label{
+            flex:1 0 100%;
+            display: block;
+        }
+    }
+}
+/** ユーザモジュール：ログインアイコン*/
+.hd-User_IconLogin{
+    flex: 0 0 32px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    background-color: transparent;
+}
+.hd-User_IconLogin::before{
+    content:'';
+    position: absolute;
+    top:5px;
+    left:8px;
+    width: 10px;
+    height: 20px;
+    background-color: transparent;
+    border:1px solid #eee;
+    border-radius: 2px;
+}
+.hd-User_IconLogin::after{
+    content:'';
+    position: absolute;
+    top:8px;
+    left:11px;
+    width: 8px;
+    height: 21px;
+    background-color: #eee;
+    transform: skewY(-30deg);
+    border-radius: 2px;
+}
+.hd-User:hover .hd-User_IconLogin::after{
+    content:'';
+    position: absolute;
+    top:8px;
+    left:13px;
+    width: 7px;
+    height: 20px;
+    background-color: #ccc;
+    transform: skewY(-45deg);
+    border-radius: 2px;
 }
